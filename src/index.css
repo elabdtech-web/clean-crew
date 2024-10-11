@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+    font-family: 'Murecho', sans-serif;
+    scroll-behavior: smooth;
+}
+
+@layer components {
+    .swiper_custom_btn {
+        @apply cursor-pointer size-12 rounded-full border border-primary grid place-items-center text-lg transition-all duration-200 ease-in-out bg-primary text-white disabled:bg-transparent disabled:opacity-60 disabled:text-black disabled:cursor-default;
+    }
+    .sidebar_nav_style {
+        @apply flex items-center py-2 px-3 text-gray rounded-lg gap-3 transition-all ease-linear hover:bg-primary hover:text-white;
+    }
+    .active {
+        @apply bg-primary text-white;
+    }
+}
+.footer_input_field {
+    all: unset;
+}
+input[type='number'] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+/* Hide the arrow buttons in Chrome and Safari */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
