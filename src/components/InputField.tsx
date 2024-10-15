@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useField } from 'formik'
 import { twMerge } from 'tailwind-merge'
 import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi'
-import { IAuthTypes } from '../../types/types'
+import { IAuthTypes } from '../types/types'
 
 const InputField: React.FC<IAuthTypes> = ({ label, type, ...props }) => {
     const [showPassword, setShowPassword] = useState(false)

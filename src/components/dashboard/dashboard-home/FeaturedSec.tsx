@@ -5,24 +5,31 @@ import {
     IoIosHeartEmpty,
 } from 'react-icons/io'
 import { SwiperSlide, Swiper, SwiperRef } from 'swiper/react'
-import projcet_6 from '/assets/project_6.jpg'
-import 'swiper/css'
 import { Navigation } from 'swiper/modules'
 import { FaStar } from 'react-icons/fa6'
-// static card data,
-const featuredData = Array.from({ length: 10 }, (_, id) => ({
-    id: id + 1,
-    label: `Standard Cleaning`,
-    title: `Clean Sweep`,
-    price: 4.0 + id,
-    rating: 81 + (id + 1),
-    image: projcet_6,
-}))
+import { featuredData } from '../../../content/featuredData'
+import 'swiper/css'
+import { Link } from 'react-router-dom'
+
+const sliderBreakPoints = {
+    '1175': {
+        spaceBetween: 10,
+        slidesPerView: 2.7,
+    },
+    '920': {
+        spaceBetween: 6,
+        slidesPerView: 2.3,
+    },
+    '628': {
+        spaceBetween: 6,
+        slidesPerView: 2,
+    },
+}
 const FeaturedSec: React.FC = () => {
     const [isEnd, setIsEnd] = useState(false)
     const [isStart, setIsStart] = useState(false)
     const swiperRef = useRef<SwiperRef>(null)
-    //
+
     const handlePrev = () => {
         if (swiperRef.current) {
             swiperRef.current.swiper.slidePrev()
@@ -46,8 +53,8 @@ const FeaturedSec: React.FC = () => {
     }
     return (
         <>
-            <section className='w-full mt-12 flex justify-between items-center'>
-                <div className='flex  gap-14'>
+            <section className='w-full mt-12 flex justify-between items-center flex-wrap gap-4'>
+                <div className='flex gap-14 max-lg:flex-col max-lg:gap-2'>
                     <h1 className='text-2xl font-medium mb-2'>
                         Featured Cleaners
                     </h1>
@@ -83,16 +90,20 @@ const FeaturedSec: React.FC = () => {
             <Swiper
                 ref={swiperRef}
                 spaceBetween={10}
-                slidesPerView={2.7}
+                slidesPerView={1}
                 modules={[Navigation]}
                 onSlideChange={handleSlideChange}
+                breakpoints={sliderBreakPoints}
                 className='py-10'
             >
                 {featuredData.map((value) => {
                     const { id, image, label, price, rating, title } = value
                     return (
                         <SwiperSlide key={id}>
-                            <div className='flex w-fit items-center h-[120px] rounded-xl p-1 shadow-card-shadow2 gap-5 '>
+                            <Link
+                                to={`./${id}`}
+                                className='flex w-full items-center h-[120px] rounded-xl p-1 shadow-card-shadow2 gap-5 '
+                            >
                                 <div className='w-[45%] h-full '>
                                     <img
                                         src={image}
@@ -128,7 +139,7 @@ const FeaturedSec: React.FC = () => {
                                         </span>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         </SwiperSlide>
                     )
                 })}

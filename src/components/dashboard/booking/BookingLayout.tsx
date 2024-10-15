@@ -6,6 +6,16 @@ import { Navigation } from 'swiper/modules'
 import { Link } from 'react-router-dom'
 import { IBookingLayout } from '../../../types/types'
 
+const breakingPoints = {
+    '778': {
+        spaceBetween: 10,
+        slidesPerView: 2,
+    },
+    '570': {
+        spaceBetween: 8,
+        slidesPerView: 1.4,
+    },
+}
 const BookingLayout: React.FC<IBookingLayout> = ({ data, mainTitle }) => {
     const [isEnd, setIsEnd] = useState(false)
     const [isStart, setIsStart] = useState(false)
@@ -55,9 +65,10 @@ const BookingLayout: React.FC<IBookingLayout> = ({ data, mainTitle }) => {
             {/* SLIDER SECTION */}
             <Swiper
                 ref={swiperRef}
-                spaceBetween={10}
-                slidesPerView={2}
+                spaceBetween={8}
+                slidesPerView={1}
                 modules={[Navigation]}
+                breakpoints={breakingPoints}
                 onSlideChange={handleSlideChange}
                 className='py-3 px-3 bg-white shadow-none'
             >
@@ -65,8 +76,8 @@ const BookingLayout: React.FC<IBookingLayout> = ({ data, mainTitle }) => {
                     const { id, image, label, date, title, status } = value
                     return (
                         <SwiperSlide key={id}>
-                            <div className='flex w-full items-center h-[140px] rounded-xl p-3 shadow-card-shadow2 gap-5 '>
-                                <div className='w-[40%] h-full '>
+                            <div className='flex w-full max-xxsm:flex-col items-center h-auto xxsm:h-[140px] rounded-xl p-3 shadow-card-shadow2 gap-5 '>
+                                <div className='w-[40%] max-xxsm:w-full h-full '>
                                     <img
                                         src={image}
                                         alt='Cleaning Service'
@@ -75,7 +86,7 @@ const BookingLayout: React.FC<IBookingLayout> = ({ data, mainTitle }) => {
                                 </div>
 
                                 {/* Right side - Content */}
-                                <div className='flex-1 flex flex-col '>
+                                <div className='flex-1 flex flex-col max-xxsm:w-full'>
                                     <p className='text-sm text-gray2'>
                                         {label}
                                     </p>
@@ -87,9 +98,9 @@ const BookingLayout: React.FC<IBookingLayout> = ({ data, mainTitle }) => {
                                     <p className='text-base font-normal mb-1 text-ter'>
                                         {date}
                                     </p>
-                                    <div className='mt-1 flex items-center justify-between'>
+                                    <div className='mt-1 flex  items-center justify-between'>
                                         <p
-                                            className={`text-[0.9rem] text-white py-1 px-7 rounded-full ${
+                                            className={`text-[0.9rem] text-white py-1 px-7 max-sm:px-3 rounded-full ${
                                                 status === 'Upcoming'
                                                     ? 'bg-yellow-400'
                                                     : status === 'Completed'

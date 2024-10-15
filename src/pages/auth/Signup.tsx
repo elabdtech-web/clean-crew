@@ -1,6 +1,6 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
-import InputField from './InputField'
+import InputField from '../../components/InputField'
 import { signUpValidation } from '../../validation/userSchema'
 import { LuLogIn } from 'react-icons/lu'
 
