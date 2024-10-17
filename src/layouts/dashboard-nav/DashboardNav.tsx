@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { GoHeart } from 'react-icons/go'
 import { IoNotificationsOutline } from 'react-icons/io5'
 import { CgMenuLeft } from 'react-icons/cg'
@@ -6,6 +6,7 @@ import avatar from '/assets/avatar.png'
 import { useMainContext } from '../../context/MainContext'
 const DashboardNav: React.FC = () => {
     const { showSidebar } = useMainContext()
+
     return (
         <>
             <nav

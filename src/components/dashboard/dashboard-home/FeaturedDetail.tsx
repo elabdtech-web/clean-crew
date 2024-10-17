@@ -1,12 +1,11 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { featuredData } from '../../../content/featuredData'
 import BreadCrumbs from './BreadCrumbs'
 import { TItems } from '../../../types/types'
 import { SlLocationPin } from 'react-icons/sl'
 import { FaStar } from 'react-icons/fa6'
 import NotFound from '../../NotFound'
-import { filteredData } from '../../../utils/filteredData'
+import { filteredFeaturedData } from '../../../utils/filteredData'
 // breadcrumbs items
 const breadCrumbsItems: TItems[] = [
     {
@@ -23,8 +22,7 @@ const breadCrumbsItems: TItems[] = [
 const FeaturedDetail: React.FC = () => {
     const { id } = useParams()
     const navigate = useNavigate()
-    // filtered data
-    const data = filteredData(id as string)
+    const filteredData = filteredFeaturedData(id as string)
     // handle on clicked
     const handleOnClick = () => {
         navigate(`./b`)
@@ -33,13 +31,13 @@ const FeaturedDetail: React.FC = () => {
         <>
             <section className='mt-8'>
                 <BreadCrumbs items={breadCrumbsItems} />
-                {!data ? (
+                {!filteredData ? (
                     <NotFound />
                 ) : (
                     <>
                         <div className='w-full h-[280px] bg-secondary/50 rounded-2xl overflow-hidden'>
                             <img
-                                src={data.image}
+                                src={filteredData?.image}
                                 alt='details image'
                                 loading='lazy'
                                 className='w-full h-full object-cover'
@@ -48,21 +46,21 @@ const FeaturedDetail: React.FC = () => {
                         <div className='flex justify-between mt-8 max-sm:flex-col gap-4'>
                             <div>
                                 <h1 className='text-2xl text-primary font-medium'>
-                                    {data.title}{' '}
+                                    {filteredData?.title}{' '}
                                     <span className='text-lg ml-1 font-normal'>
-                                        ({data.label})
+                                        ({filteredData?.label})
                                     </span>
                                 </h1>
                                 <p className='mt-2 text-base text-secondary/70 flex gap-2 items-center'>
                                     <SlLocationPin />
-                                    {data.location}
+                                    {filteredData?.location}
                                 </p>
                             </div>
 
                             <div className='flex gap-6 '>
                                 <div>
                                     <h1 className='text-2xl text-ter font-medium'>
-                                        ${data.price}.00{' '}
+                                        ${filteredData?.price}.00{' '}
                                         <span className='text-secondary/60 text-lg ml-1 font-normal max-xxsm:block'>
                                             (per hour)
                                         </span>
@@ -73,7 +71,7 @@ const FeaturedDetail: React.FC = () => {
                                             className='text-yellow-300'
                                         />
                                         <span className='ml-2 text-sm text-muted-foreground'>
-                                            ({data.rating} reviews)
+                                            ({filteredData?.rating} reviews)
                                         </span>
                                     </p>
                                 </div>
@@ -92,7 +90,7 @@ const FeaturedDetail: React.FC = () => {
                                 About Us
                             </h1>
                             <p className='text-secondary/70 prose-base'>
-                                {data.about}
+                                {filteredData?.about}
                             </p>
                         </div>
                     </>

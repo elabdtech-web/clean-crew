@@ -1,12 +1,10 @@
-import { v4 as uuidv4 } from 'uuid'
-
 import project_6 from '/assets/projects/project_6.jpg'
 import project_4 from '/assets/projects/project_4.jpg'
 import project_5 from '/assets/projects/project_5.jpg'
 import project_3 from '/assets/projects/project_3.png'
 export const featuredData = [
     {
-        id: uuidv4(),
+        id: '3af5ad8c-bc80-4953-bb59-d70c6580b19f',
         label: `Standard Cleaning`,
         title: `Clean Sweep`,
         price: 4.0,
@@ -16,7 +14,7 @@ export const featuredData = [
         image: project_6,
     },
     {
-        id: uuidv4(),
+        id: '1c90683e-80ee-4fb3-a80c-0fbd40d8d0ad',
         label: `Standard Cleaning`,
         title: `Clean Sweep`,
         price: 8,
@@ -26,7 +24,7 @@ export const featuredData = [
         image: project_4,
     },
     {
-        id: uuidv4(),
+        id: '6676b42a-8bd5-4b49-bd65-fd3d81626b58',
         label: `Deep Cleaning`,
         title: `Clean Sweep`,
         price: 10,
@@ -36,7 +34,7 @@ export const featuredData = [
         image: project_5,
     },
     {
-        id: uuidv4(),
+        id: '2146d679-4349-4f7a-93b1-5f424a00234c',
         label: `Office Cleaning`,
         title: `Clean Sweep`,
         price: 5,
@@ -46,7 +44,7 @@ export const featuredData = [
         image: project_6,
     },
     {
-        id: uuidv4(),
+        id: '8ad9126c-db72-4ef8-897c-c75954a1cf03',
         label: `Airbnb Cleaning`,
         title: `Clean Sweep`,
         price: 6,
@@ -56,7 +54,7 @@ export const featuredData = [
         image: project_3,
     },
     {
-        id: uuidv4(),
+        id: '04eddfbd-8927-46c4-a749-e385e59ded63',
         label: `Standard Cleaning`,
         title: `Clean Sweep`,
         price: 10,

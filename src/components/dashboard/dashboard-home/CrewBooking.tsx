@@ -1,22 +1,23 @@
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import NotFound from '../../NotFound'
 import { TItems } from '../../../types/types'
 import BreadCrumbs from './BreadCrumbs'
-import { filteredData } from '../../../utils/filteredData'
 import { GoDotFill } from 'react-icons/go'
 import {
     allergies,
     bookingTiming,
     productPreference,
 } from '../../../content/featuredData'
-import { useState } from 'react'
+import { filteredFeaturedData } from '../../../utils/filteredData'
 
 const CrewBooking = () => {
     const [products, setProducts] = useState<string>('scentedProducts')
     const [chemicalsAllergies, setChemicalAllergies] =
         useState<string>('noAllergies')
     const { id } = useParams()
-    const data = filteredData(id as string)
+    const filteredData = filteredFeaturedData(id as string)
+
     // breadcrumbs items
     const breadCrumbsItems: TItems[] = [
         {
@@ -49,7 +50,7 @@ const CrewBooking = () => {
         <>
             <section className='mt-8'>
                 <BreadCrumbs items={breadCrumbsItems} />
-                {!data ? (
+                {!filteredData ? (
                     <NotFound />
                 ) : (
                     <div className='flex gap-8 w-full max-sm:flex-col'>
@@ -218,7 +219,7 @@ const CrewBooking = () => {
                                 <h1 className='text-xl text-secondary/80'>
                                     Total Charge :{' '}
                                     <span className='text-2xl text-ter'>
-                                        ${data.price}.00
+                                        ${filteredData?.price}.00
                                     </span>
                                 </h1>
                                 <hr className='max-sm:hidden w-[0.15rem] h-full border-none outline-none bg-secondary/20' />

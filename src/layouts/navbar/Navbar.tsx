@@ -56,13 +56,16 @@ const Navbar: React.FC = () => {
                     </li>
                 </ul>
                 <div className='flex items-center gap-6'>
-                    <button className='text-primary text-base font-semibold max-lg:hidden'>
+                    {/* <button className='text-primary text-base font-semibold max-lg:hidden'>
                         Sign Up
-                    </button>
-                    <button className='bg-primary text-white py-[0.65rem] px-6 rounded-full flex items-center gap-2 font-normal text-base max-lg:hidden'>
+                    </button> */}
+                    <Link
+                        to='./auth'
+                        className='bg-primary text-white py-[0.65rem] px-6 rounded-full flex items-center gap-2 font-normal text-base max-lg:hidden'
+                    >
                         <CiLogin size={23} className='' />
                         <span className='text-base '>Login</span>
-                    </button>
+                    </Link>
                     <CiMenuFries
                         size={25}
                         className='max-lg:block hidden cursor-pointer'
