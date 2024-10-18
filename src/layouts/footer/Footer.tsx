@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaInstagram, FaFacebook, FaXTwitter } from 'react-icons/fa6'
 import logo from '/assets/logo.png'
 import { Link } from 'react-router-dom'
 import { TbSend2 } from 'react-icons/tb'
 const Footer: React.FC = () => {
+    const [email, setEmail] = useState<string>('')
+    // on submit handler
+    const onSubmitHandler = () => {
+        setEmail('')
+        if (email) {
+            window.location.href = `mailto:${email}`
+        }
+    }
     return (
         <footer className='mt-40 w-full flex gap-4 px-base pb-16 max-lg:flex-wrap max-sm:px-mobile-base'>
             <div className='flex-1'>
@@ -72,10 +80,13 @@ const Footer: React.FC = () => {
                         type='email'
                         className='w-full rounded-full border  py-2 pl-4 pr-10 text-primary'
                         placeholder='Email Address'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                     <TbSend2
                         size={25}
-                        className='text-ter cursor-pointer absolute right-5'
+                        onClick={onSubmitHandler}
+                        className='text-ter cursor-pointer absolute right-5 disabled:cursor-default'
                     />
                 </div>
             </div>
