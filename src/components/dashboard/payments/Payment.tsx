@@ -4,7 +4,9 @@ import { MdDeleteOutline } from 'react-icons/md'
 const Payment: React.FC = () => {
     return (
         <div className='w-full'>
-            <h1 className='text-2xl font-medium mb-2'>Transaction history</h1>
+            <h1 className='text-2xl font-medium mb-2 mt-4'>
+                Transaction history
+            </h1>
             <table className='w-full border-collapse mt-6'>
                 <thead>
                     <tr className='bg-primary text-white rounded-lg font-normal'>

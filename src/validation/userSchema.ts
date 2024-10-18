@@ -28,6 +28,7 @@ export const signUpValidation = Yup.object().shape({
     ),
 })
 export const editProfileSchema = Yup.object().shape({
+    name: Yup.string().max(30, 'Name too large').required('Name is required'),
     email: Yup.string()
         .email('Invalid email address')
         .max(200, 'Email address too large')
@@ -37,15 +38,14 @@ export const editProfileSchema = Yup.object().shape({
         .min(10, 'Phone number must be at least 11 characters')
         .max(15, 'Phone number too large'),
     currentPassword: Yup.string().required('Current password is required'),
-    password: Yup.string()
+    newPassword: Yup.string()
         .matches(
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/,
             'Password must include capitals, small letters, numbers, and symbols'
         )
         .length(10, 'Password too short')
         .required('Password is required'),
-    confirmPassword: Yup.string().oneOf(
-        [Yup.ref('password')],
-        'Passwords must match'
-    ),
+    confirmPassword: Yup.string()
+        .oneOf([Yup.ref('password')], 'Passwords must match')
+        .required('Confirm password is required'),
 })

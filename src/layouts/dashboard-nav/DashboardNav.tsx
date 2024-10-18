@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { GoHeart } from 'react-icons/go'
 import { IoNotificationsOutline } from 'react-icons/io5'
 import { CgMenuLeft } from 'react-icons/cg'
